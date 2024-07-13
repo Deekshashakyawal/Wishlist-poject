@@ -1,0 +1,13 @@
+.signG{
+    background-color: #fff;
+    color: #f84471;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5%;
+    border-color: #f84471;
+    font-weight: bold;
+}
+.signG:hover{
+    cursor: pointer;
+    background-color: #f84471;
+    color: #fff;
+}
