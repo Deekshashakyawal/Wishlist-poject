@@ -1,24 +1,21 @@
 import { Link } from "react-router-dom";
 import {auth} from "../config/firebase.ts"
 //import {useAuthState} from "react-firebase-hooks/auth";
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { doc } from "firebase/firestore";
-import {db} from "../config/firebase.ts";
-import { deleteDoc } from "firebase/firestore";
+import { AppContext } from "../AppContext.js";
 
 export const Navbar=()=>{
     const navigate = useNavigate();
     //var user = useAuthState(auth);
-    const [userState, forceRender]=useState(false);
+    const data=useContext(AppContext);
     const signUserOut=async()=>{
         await signOut(auth);
-        forceRender ((userState)=> !userState);
+        data.forceRender ((userState)=> !userState);
         navigate('/login');
     }
     const signUserIn=async()=>{
-      forceRender ((userState)=> userState);
       navigate('/login');
   }
     return (
@@ -39,12 +36,12 @@ export const Navbar=()=>{
             <li><Link >ESSENTIALS</Link></li>
           </ul>
           <div class="user-actions">
-            {!userState && (
+            {!data.userState && (
                 <>
                 <button onClick={signUserIn} class="btn btn-primary">Log In</button>
                 </>
             )}
-          {userState && (
+          {data.userState && (
           <button class="btn" onClick={signUserOut}>Log Out</button>
           )}
           </div>
@@ -55,6 +52,3 @@ export const Navbar=()=>{
 }
 
 export default Navbar;
-export async function DeleteFromFirestore(collectionname, id) {
-  return await deleteDoc(doc(db, collectionname, id));
-}
