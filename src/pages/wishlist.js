@@ -27,7 +27,7 @@ export const Wishlist=()=>{
       <div class="container">
         <h1>My Wishlist</h1>
         <div class="user-actions">
-          <button class="btn">Share Wishlist</button>
+          <button class="btn">Shared With</button>
         </div>
         <ul id="wishlist-items">
           {val.map(values => <div>

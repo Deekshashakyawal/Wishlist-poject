@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import {auth} from "../config/firebase.ts"
-//import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../config/firebase.ts";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -8,12 +7,11 @@ import { AppContext } from "../AppContext.js";
 
 export const Navbar=()=>{
     const navigate = useNavigate();
-    //var user = useAuthState(auth);
     const data=useContext(AppContext);
     const signUserOut=async()=>{
         await signOut(auth);
-        data.forceRender ((userState)=> !userState);
         navigate('/login');
+        data.forceRender ((userState)=> !userState);
     }
     const signUserIn=async()=>{
       navigate('/login');
@@ -37,9 +35,7 @@ export const Navbar=()=>{
           </ul>
           <div class="user-actions">
             {!data.userState && (
-                <>
                 <button onClick={signUserIn} class="btn btn-primary">Log In</button>
-                </>
             )}
           {data.userState && (
           <button class="btn" onClick={signUserOut}>Log Out</button>
