@@ -127,6 +127,92 @@
   padding: 20px 0px 20px 20px;
   margin-top: 6px;
 }
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: visible;
+}
+
+/* The actual popup */
+.popuptext {
+  margin-top: 0px;
+  overflow-y: scroll !important;
+  visibility: hidden;
+  width: 300px;
+  height: 35px;
+  background-color: #555;
+  color: #fff;
+  border-radius: 6px;
+  padding-top: 2px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+.sUser{
+  margin-top: 2px;
+  margin-bottom: 2px;
+  float: left;
+  margin-left: 10px;
+  font-size:14px;
+}
+.btn-remove {
+    margin-left: 2px;
+    float:right;
+    margin-right: 10px;
+    flex-direction: row;
+}
+.popup .popuptext2 {
+  visibility: hidden;
+  background-color: #555;
+  width: 230px;
+  color: #fff;
+  display: inline;
+  border-radius: 6px;
+  padding: 2px 2px 6px 2px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popuptext::after {
+  content: "";
+  position: absolute;
+  height:5px;
+  bottom: 97%;
+  left: 30%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+.popup .popuptext2::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
   .footer {
   position: fixed;
    left: 0;

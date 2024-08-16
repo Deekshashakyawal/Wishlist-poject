@@ -1,6 +1,5 @@
 
-
-export const Main=()=>{
+export const Main=()=>{  // Landing Page
     return (
         <div>
     <main class="main">
@@ -8,16 +7,12 @@ export const Main=()=>{
         <h1>My Wishlist</h1>
         <br/>
         <h2>Login to see your Wishlist!!</h2>
-        <div class="user-actions">
-        </div>
-        <ul id="wishlist-items">
-        </ul>
       </div>
     </main>
 
     <footer>
       <div class="container footer">
-        <p>&copy; 2024 Myntra. All rights reserved.</p>
+        <p>&copy; 2024. All rights reserved.</p>
       </div>
     </footer>
     </div>

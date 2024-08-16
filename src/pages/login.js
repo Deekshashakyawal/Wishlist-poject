@@ -1,19 +1,22 @@
-import { signInWithPopup } from "firebase/auth";
-import { auth , provider } from "../config/firebase.ts";
+import { signInWithPopup, getAuth } from "firebase/auth";
+import { provider } from "../config/firebase.ts";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
 import { useContext } from "react";
 import { AppContext } from "../AppContext.js";
+import "./login.css";
+
+export let currentUserEmail =""; // To store the current user email
+const auth=getAuth();
 
 export const Login=()=>{
-  const navigate = useNavigate();
-  const data=useContext(AppContext);
-  const signInWithGoogle= async ()=>{
-      const result=await signInWithPopup(auth, provider)
-      data.forceRender((userState)=> !userState)
-      console.log(result);
-      navigate("/wishlist");
-  };
+    const navigate = useNavigate();
+    const data=useContext(AppContext);
+    const signInWithGoogle= async ()=>{
+        const result=await signInWithPopup(auth, provider) // sign in with google by popup
+        data.forceRender((userState)=> !userState)  // change user state
+        currentUserEmail = result.user.email;
+        navigate("/wishlist");
+    };
     return (
         <div>
             <br/>
@@ -22,9 +25,10 @@ export const Login=()=>{
             <button className="signG" onClick={signInWithGoogle}>Sign In With Google</button>
             <footer>
             <div class="container footer">
-            <p>&copy; 2024 Myntra. All rights reserved.</p>
+            <p>&copy; 2024. All rights reserved.</p>
             </div>
             </footer>
         </div>
     );
 };
+
